@@ -1,4 +1,7 @@
-﻿using System;
+﻿using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +21,7 @@ namespace BooksApi.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            FormatterConfig.RegisterGlobalFormatters(GlobalConfiguration.Configuration.Formatters);
         }
     }
 }

@@ -53,7 +53,7 @@ namespace BooksApi.Web.Controllers
             return ReturnResult(book);
         }
 
-        // GET "api/Books/2013-12-10"  or  "api/Books/2013/12/10"
+        // GET "api/Books/date/2013-12-10"  or  "api/Books/date/2013/12/10"
         [Route("date/{publicationDate:datetime:regex(\\d{4}-\\d{2}-\\d{2})}")] // yyyy-mm-dd
         [Route("date/{*publicationDate:datetime:regex(\\d{4}/\\d{2}/\\d{2})}")] // yyyy/mm/dd (* means use remaining url segments for the parameter)
         [ResponseType(typeof(IQueryable<BookSummaryRequestObject>))]
