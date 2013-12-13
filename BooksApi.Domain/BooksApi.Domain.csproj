@@ -43,8 +43,8 @@
     <Compile Include="Book\UpdateBookRequestObject.cs" />
     <Compile Include="Validation\ValidationObject.cs" />
     <Compile Include="Validation\ValidationMessage.cs" />
-    <Compile Include="Book\BookDetailsRequestObject.cs" />
-    <Compile Include="Book\BookSummaryRequestObject.cs" />
+    <Compile Include="Book\BookDetailsResponseObject.cs" />
+    <Compile Include="Book\BookSummaryResponseObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

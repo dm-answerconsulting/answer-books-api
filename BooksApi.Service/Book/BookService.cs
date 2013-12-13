@@ -12,51 +12,51 @@ namespace BooksApi.Service
     {
         private readonly IRepository _repo = new Repository();
           
-        public Task<IQueryable<BookSummaryRequestObject>> GetBooks()
+        public Task<IQueryable<BookSummaryResponseObject>> GetBooks()
         {
-            var books = _repo.BooksWithAuthorAndGenre.SelectBookSummaryRequestObjects();
+            var books = _repo.BooksWithAuthorAndGenre.SelectBookSummaryResponseObjects();
 
             return CreateFacadeTask(books);
         }
 
-        public Task<BookSummaryRequestObject> GetBook(int id) 
+        public Task<BookSummaryResponseObject> GetBook(int id) 
         {
             var book = _repo.BooksWithAuthorAndGenre.ForId(id)
-                                                    .SelectBookSummaryRequestObjects()
+                                                    .SelectBookSummaryResponseObjects()
                                                     .FirstOrDefault();
 
             return CreateFacadeTask(book);
         }
 
-        public Task<BookDetailsRequestObject> GetBookDetails(int id)
+        public Task<BookDetailsResponseObject> GetBookDetails(int id)
         {
             var book = _repo.BooksWithAuthorAndGenre.ForId(id)
-                                                    .SelectBookDetailsRequestObjects()
+                                                    .SelectBookDetailsResponseObjects()
                                                     .FirstOrDefault();
 
             return CreateFacadeTask(book);
         }
 
-        public Task<IQueryable<BookSummaryRequestObject>> GetBooksByGenre(string genreName)
+        public Task<IQueryable<BookSummaryResponseObject>> GetBooksByGenre(string genreName)
         {
             var book = _repo.BooksWithAuthorAndGenre.ForGenre(genreName)
-                                                    .SelectBookSummaryRequestObjects();
+                                                    .SelectBookSummaryResponseObjects();
 
             return CreateFacadeTask(book);
         }
 
-        public Task<IQueryable<BookSummaryRequestObject>> GetBooksByAuthor(int authorId)
+        public Task<IQueryable<BookSummaryResponseObject>> GetBooksByAuthor(int authorId)
         {
             var book = _repo.BooksWithAuthorAndGenre.ForAuthorId(authorId)
-                                                    .SelectBookSummaryRequestObjects();
+                                                    .SelectBookSummaryResponseObjects();
 
             return CreateFacadeTask(book);
         }
 
-        public Task<IQueryable<BookSummaryRequestObject>> GetBooksByPublicationDate(DateTime publicationDate)
+        public Task<IQueryable<BookSummaryResponseObject>> GetBooksByPublicationDate(DateTime publicationDate)
         {
             var book = _repo.BooksWithAuthorAndGenre.ForPublicationDate(publicationDate)
-                                                    .SelectBookSummaryRequestObjects();
+                                                    .SelectBookSummaryResponseObjects();
 
             return CreateFacadeTask(book);
         }

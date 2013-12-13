@@ -1,6 +1,6 @@
 ﻿namespace BooksApi.Domain
 {
-    public class BookSummaryRequestObject
+    public class BookSummaryResponseObject
     {
         public int Id { get; set; }
         public string Title { get; set; }

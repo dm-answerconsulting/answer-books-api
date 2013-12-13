@@ -15,7 +15,7 @@ namespace BooksApi.Web.Controllers
 
         // GET api/Books        
         [Route("")]
-        [ResponseType(typeof(IQueryable<BookSummaryRequestObject>))]
+        [ResponseType(typeof(IQueryable<BookSummaryResponseObject>))]
         public async Task<IHttpActionResult> GetBooks()
         {
             var books = await _service.GetBooks();
@@ -25,7 +25,7 @@ namespace BooksApi.Web.Controllers
 
         // GET api/Books/5
         [Route("{id:int}")]
-        [ResponseType(typeof(BookSummaryRequestObject))]
+        [ResponseType(typeof(BookSummaryResponseObject))]
         public async Task<IHttpActionResult> GetBook(int id)
         {
             var book = await _service.GetBook(id);
@@ -35,7 +35,7 @@ namespace BooksApi.Web.Controllers
 
         // GET api/Books/5/details
         [Route("{id:int}/details")]
-        [ResponseType(typeof(BookDetailsRequestObject))]
+        [ResponseType(typeof(BookDetailsResponseObject))]
         public async Task<IHttpActionResult> GetBookDetails(int id)
         {
             var book = await _service.GetBookDetails(id);
@@ -45,7 +45,7 @@ namespace BooksApi.Web.Controllers
 
         // GET api/Books/romance
         [Route("{genre}")]
-        [ResponseType(typeof(IQueryable<BookSummaryRequestObject>))]
+        [ResponseType(typeof(IQueryable<BookSummaryResponseObject>))]
         public async Task<IHttpActionResult> GetBooksByGenre(string genre)
         {
             var book = await _service.GetBooksByGenre(genre);
@@ -56,7 +56,7 @@ namespace BooksApi.Web.Controllers
         // GET "api/Books/date/2013-12-10"  or  "api/Books/date/2013/12/10"
         [Route("date/{publicationDate:datetime:regex(\\d{4}-\\d{2}-\\d{2})}")] // yyyy-mm-dd
         [Route("date/{*publicationDate:datetime:regex(\\d{4}/\\d{2}/\\d{2})}")] // yyyy/mm/dd (* means use remaining url segments for the parameter)
-        [ResponseType(typeof(IQueryable<BookSummaryRequestObject>))]
+        [ResponseType(typeof(IQueryable<BookSummaryResponseObject>))]
         public async Task<IHttpActionResult> GetBooks(DateTime publicationDate)
         {
             var book = await _service.GetBooksByPublicationDate(publicationDate);
@@ -66,7 +66,7 @@ namespace BooksApi.Web.Controllers
 
         // GET api/authors/2/books
         [Route("~/api/authors/{authorId}/books")]
-        [ResponseType(typeof(IQueryable<BookSummaryRequestObject>))]
+        [ResponseType(typeof(IQueryable<BookSummaryResponseObject>))]
         public async Task<IHttpActionResult> GetBooksByAuthor(int authorId)
         {
             var book = await _service.GetBooksByAuthor(authorId);
