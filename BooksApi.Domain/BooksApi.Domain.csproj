@@ -39,10 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Validation\BaseValidationProperties.cs" />
+    <Compile Include="Book\CreateBookRequestObject.cs" />
+    <Compile Include="Book\UpdateBookRequestObject.cs" />
+    <Compile Include="Validation\ValidationObject.cs" />
     <Compile Include="Validation\ValidationMessage.cs" />
-    <Compile Include="Book\BookDetailTransferObject.cs" />
-    <Compile Include="Book\BookTransferObject.cs" />
+    <Compile Include="Book\BookDetailsRequestObject.cs" />
+    <Compile Include="Book\BookSummaryRequestObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

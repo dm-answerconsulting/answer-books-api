@@ -12,17 +12,17 @@ namespace BooksApi.Service
     {
         private readonly IRepository _repo = new Repository();
           
-        public Task<IQueryable<BookTransferObject>> GetBooks()
+        public Task<IQueryable<BookSummaryRequestObject>> GetBooks()
         {
-            var books = _repo.BooksWithAuthorAndGenre.SelectBookTransferObjects();
+            var books = _repo.BooksWithAuthorAndGenre.SelectBookSummaryRequestObjects();
 
             return CreateFacadeTask(books);
         }
 
-        public Task<BookTransferObject> GetBook(int id) 
+        public Task<BookDetailsRequestObject> GetBook(int id) 
         {
             var book = _repo.BooksWithAuthorAndGenre.ForId(id)
-                                                    .SelectBookTransferObjects()
+                                                    .SelectBookDetailsRequestObjects()
                                                     .FirstOrDefault();
 
             return CreateFacadeTask(book);

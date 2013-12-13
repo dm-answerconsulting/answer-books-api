@@ -13,7 +13,7 @@ namespace BooksApi.Web.API.Controllers
         private readonly BookService _service = new BookService();
 
         // GET api/Books        
-        [ResponseType(typeof(IQueryable<BookTransferObject>))]
+        [ResponseType(typeof(IQueryable<BookSummaryRequestObject>))]
         public async Task<IHttpActionResult> GetBooks()
         {
             var books = await _service.GetBooks();
@@ -22,7 +22,7 @@ namespace BooksApi.Web.API.Controllers
         }
 
         // GET api/Books/5
-        [ResponseType(typeof(BookTransferObject))]
+        [ResponseType(typeof(BookDetailsRequestObject))]
         public async Task<IHttpActionResult> GetBook(int id)
         {
             var book = await _service.GetBook(id);

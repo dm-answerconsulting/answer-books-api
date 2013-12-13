@@ -7,14 +7,24 @@ namespace BooksApi.Service.PipesAndFilters
 {
     public static class BookObjectMappingExtensions
     {
-        public static IQueryable<BookTransferObject> SelectBookTransferObjects(this IQueryable<Book> query)
+        public static IQueryable<BookDetailsRequestObject> SelectBookDetailsRequestObjects(this IQueryable<Book> query)
         {
-            return query.Select(CreateBookTransferObject).AsQueryable();
+            return query.Select(AsBookDetailsRequestObject).AsQueryable();
         }
 
-        private static BookTransferObject CreateBookTransferObject(Book book) 
+        public static IQueryable<BookSummaryRequestObject> SelectBookSummaryRequestObjects(this IQueryable<Book> query)
         {
-            return new BookTransferObject().InjectFrom(book) as BookTransferObject;
+            return query.Select(AsBookSummaryRequestObject).AsQueryable();
+        }
+
+        private static BookDetailsRequestObject AsBookDetailsRequestObject(Book book)
+        {
+            return new BookDetailsRequestObject().InjectFrom(book) as BookDetailsRequestObject;
+        }
+
+        private static BookSummaryRequestObject AsBookSummaryRequestObject(Book book) 
+        {
+            return new BookSummaryRequestObject().InjectFrom(book) as BookSummaryRequestObject;
         }
     }
 }
