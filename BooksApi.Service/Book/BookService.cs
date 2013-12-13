@@ -19,7 +19,16 @@ namespace BooksApi.Service
             return CreateFacadeTask(books);
         }
 
-        public Task<BookDetailsRequestObject> GetBook(int id) 
+        public Task<BookSummaryRequestObject> GetBook(int id) 
+        {
+            var book = _repo.BooksWithAuthorAndGenre.ForId(id)
+                                                    .SelectBookSummaryRequestObjects()
+                                                    .FirstOrDefault();
+
+            return CreateFacadeTask(book);
+        }
+
+        public Task<BookDetailsRequestObject> GetBookDetails(int id)
         {
             var book = _repo.BooksWithAuthorAndGenre.ForId(id)
                                                     .SelectBookDetailsRequestObjects()
@@ -27,7 +36,31 @@ namespace BooksApi.Service
 
             return CreateFacadeTask(book);
         }
-        
+
+        public Task<IQueryable<BookSummaryRequestObject>> GetBooksByGenre(string genreName)
+        {
+            var book = _repo.BooksWithAuthorAndGenre.ForGenre(genreName)
+                                                    .SelectBookSummaryRequestObjects();
+
+            return CreateFacadeTask(book);
+        }
+
+        public Task<IQueryable<BookSummaryRequestObject>> GetBooksByAuthor(int authorId)
+        {
+            var book = _repo.BooksWithAuthorAndGenre.ForAuthorId(authorId)
+                                                    .SelectBookSummaryRequestObjects();
+
+            return CreateFacadeTask(book);
+        }
+
+        public Task<IQueryable<BookSummaryRequestObject>> GetBooksByPublicationDate(DateTime publicationDate)
+        {
+            var book = _repo.BooksWithAuthorAndGenre.ForPublicationDate(publicationDate)
+                                                    .SelectBookSummaryRequestObjects();
+
+            return CreateFacadeTask(book);
+        }
+
         public void Dispose()
         {
             if (_repo != null)

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using BooksApi.Data.Models;
 
 namespace BooksApi.Service.PipesAndFilters
@@ -10,13 +11,19 @@ namespace BooksApi.Service.PipesAndFilters
             return query.Where(b => b.Id == id);
         }
 
-        public static IQueryable<Book> ForGenre(this IQueryable<Book> query, int genreId)
+        public static IQueryable<Book> ForAuthorId(this IQueryable<Book> query, int authorId)
         {
-            return query.Where(b => b.GenreId == genreId);
+            return query.Where(b => b.AuthorId == authorId);
         }
-        public static IQueryable<Book> ExcludeGenre(this IQueryable<Book> query, int genreId)
+
+        public static IQueryable<Book> ForGenre(this IQueryable<Book> query, string genreName)
         {
-            return query.Where(b => b.GenreId != genreId);
+            return query.Where(b => b.Genre.Name == genreName);
+        }
+
+        public static IQueryable<Book> ForPublicationDate(this IQueryable<Book> query, DateTime publicationDate)
+        {
+            return query.Where(b => b.PublishDate.Date == publicationDate.Date);
         }
     }
 }
