@@ -1,25 +1,22 @@
 ﻿using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using System.Linq.Expressions;
 using BooksApi.Service;
 using BooksApi.Domain;
 
 namespace BooksApi.Web.API.Controllers
 {
     [RoutePrefix("api/books")]
-    public class BooksController : ApiController
+    public class BooksController : BaseApiController
     {
-        private readonly BookService service = new BookService();
+        private readonly BookService _service = new BookService();
 
         // GET api/Books        
         [ResponseType(typeof(IQueryable<BookTransferObject>))]
         public async Task<IHttpActionResult> GetBooks()
         {
-            var books = await service.GetBooks();
+            var books = await _service.GetBooks();
 
             return ReturnResult(books);
         }
@@ -28,26 +25,16 @@ namespace BooksApi.Web.API.Controllers
         [ResponseType(typeof(BookTransferObject))]
         public async Task<IHttpActionResult> GetBook(int id)
         {
-            var book = await service.GetBook(id);
+            var book = await _service.GetBook(id);
 
             return ReturnResult(book);
         }
-
-        private IHttpActionResult ReturnResult<T>(T content)
-        {
-            if (content == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(content);
-        }
-
+        
         protected override void Dispose(bool disposing)
         {
-            if (service != null)
+            if (_service != null)
             {
-                service.Dispose();
+                _service.Dispose();
             }
             base.Dispose(disposing);
         }

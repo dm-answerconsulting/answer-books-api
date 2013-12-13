@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Validation\BaseValidationProperties.cs" />
+    <Compile Include="Validation\ValidationMessage.cs" />
     <Compile Include="Book\BookDetailTransferObject.cs" />
     <Compile Include="Book\BookTransferObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

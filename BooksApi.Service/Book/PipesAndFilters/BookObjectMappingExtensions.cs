@@ -1,10 +1,6 @@
 ﻿using BooksApi.Data.Models;
 using BooksApi.Domain;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Omu.ValueInjecter;
 
 namespace BooksApi.Service.PipesAndFilters

@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\BaseTaskResultService.cs" />
     <Compile Include="Book\BookService.cs" />
     <Compile Include="Book\PipesAndFilters\BookFilters.cs" />
     <Compile Include="Book\PipesAndFilters\BookObjectMappingExtensions.cs" />

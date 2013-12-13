@@ -1,10 +1,6 @@
-﻿using BooksApi.Data;
-using BooksApi.Data.Models;
-using System;
+﻿using BooksApi.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BooksApi.Data.Integration
 {
@@ -55,14 +51,7 @@ namespace BooksApi.Data.Integration
 
         public virtual IEnumerable<T> Add<T>(IEnumerable<T> entities) where T : class
         {
-            var result = new List<T>();
-
-            foreach (var entity in entities)
-            {
-                result.Add(Add(entity));
-            }
-
-            return result;
+            return entities.Select(Add).ToList();
         }
 
         public virtual T Remove<T>(T entity) where T : class
@@ -72,14 +61,7 @@ namespace BooksApi.Data.Integration
 
         public virtual IEnumerable<T> Remove<T>(IEnumerable<T> entities) where T : class
         {
-            var result = new List<T>();
-
-            foreach (var entity in entities)
-            {
-                result.Add(Remove(entity));
-            }
-
-            return result;
+            return entities.Select(Remove).ToList();
         }
 
         public virtual T FindByKey<T>(params object[] key) where T : class
