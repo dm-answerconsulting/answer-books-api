@@ -23,7 +23,15 @@ namespace BooksApi.Service.PipesAndFilters
         
         public static IQueryable<Book> ForPublicationDate(this IQueryable<Book> query, DateTime publicationDate)
         {
-            return query.Where(b => b.PublishDate.Year == publicationDate.Year && b.PublishDate.Month == publicationDate.Month && b.PublishDate.Day == publicationDate.Day);
+            var from = new DateTime(publicationDate.Year, publicationDate.Month, publicationDate.Day, 0, 0, 0);
+            var to = from.AddDays(1).AddMilliseconds(-1);
+
+            return query.ForPublicationDateBetween(from, to);
+        }
+
+        public static IQueryable<Book> ForPublicationDateBetween(this IQueryable<Book> query, DateTime dateFrom, DateTime dateTo)
+        {
+            return query.Where(b => b.PublishDate >= dateFrom && b.PublishDate <= dateTo);
         }
     }
 }
