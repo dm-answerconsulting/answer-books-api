@@ -20,7 +20,7 @@ namespace BooksApi.Service.PipesAndFilters
         {
             return query.Where(b => b.Genre.Name == genreName);
         }
-
+        
         public static IQueryable<Book> ForPublicationDate(this IQueryable<Book> query, DateTime publicationDate)
         {
             return query.Where(b => b.PublishDate.Year == publicationDate.Year && b.PublishDate.Month == publicationDate.Month && b.PublishDate.Day == publicationDate.Day);

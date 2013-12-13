@@ -19,12 +19,12 @@ namespace BooksApi.Service.PipesAndFilters
 
         private static BookDetailsResponseObject AsBookDetailsResponseObject(Book book)
         {
-            return new BookDetailsResponseObject().InjectFrom(book) as BookDetailsResponseObject;
+            return new BookDetailsResponseObject().InjectFrom<FlatLoopValueInjection>(book) as BookDetailsResponseObject;
         }
 
         private static BookSummaryResponseObject AsBookSummaryResponseObject(Book book) 
         {
-            return new BookSummaryResponseObject().InjectFrom(book) as BookSummaryResponseObject;
+            return new BookSummaryResponseObject().InjectFrom<FlatLoopValueInjection>(book) as BookSummaryResponseObject;
         }
     }
 }
