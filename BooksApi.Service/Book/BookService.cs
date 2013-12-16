@@ -12,14 +12,14 @@ namespace BooksApi.Service
     {
         private readonly IRepository _repo = new Repository();
           
-        public Task<IQueryable<BookSummaryResponseObject>> GetBooks()
+        public Task<IQueryable<BookSummaryResponse>> GetBooks()
         {
             var books = _repo.BooksWithAuthorAndGenre.SelectBookSummaryResponseObjects();
 
             return CreateFacadeTask(books);
         }
 
-        public Task<BookSummaryResponseObject> GetBook(int id) 
+        public Task<BookSummaryResponse> GetBook(int id) 
         {
             var book = _repo.BooksWithAuthorAndGenre.ForId(id)
                                                     .SelectBookSummaryResponseObjects()
@@ -28,7 +28,7 @@ namespace BooksApi.Service
             return CreateFacadeTask(book);
         }
 
-        public Task<BookDetailsResponseObject> GetBookDetails(int id)
+        public Task<BookDetailsResponse> GetBookDetails(int id)
         {
             var book = _repo.BooksWithAuthorAndGenre.ForId(id)
                                                     .SelectBookDetailsResponseObjects()
@@ -37,7 +37,7 @@ namespace BooksApi.Service
             return CreateFacadeTask(book);
         }
 
-        public Task<IQueryable<BookSummaryResponseObject>> GetBooksByGenre(string genreName)
+        public Task<IQueryable<BookSummaryResponse>> GetBooksByGenre(string genreName)
         {
             var book = _repo.BooksWithAuthorAndGenre.ForGenre(genreName)
                                                     .SelectBookSummaryResponseObjects();
@@ -45,7 +45,7 @@ namespace BooksApi.Service
             return CreateFacadeTask(book);
         }
 
-        public Task<IQueryable<BookSummaryResponseObject>> GetBooksByAuthor(int authorId)
+        public Task<IQueryable<BookSummaryResponse>> GetBooksByAuthor(int authorId)
         {
             var book = _repo.BooksWithAuthorAndGenre.ForAuthorId(authorId)
                                                     .SelectBookSummaryResponseObjects();
@@ -53,9 +53,9 @@ namespace BooksApi.Service
             return CreateFacadeTask(book);
         }
 
-        public Task<IQueryable<BookSummaryResponseObject>> GetBooksByPublicationDate(DateTime publicationDate)
+        public Task<IQueryable<BookSummaryResponse>> GetBooksByPublicationDate(DateTime publicationDate)
         {
-            var book = _repo.BooksWithAuthorAndGenre.ForPublicationDate(publicationDate)
+            var book = _repo.BooksWithAuthorAndGenre.ForPublicationDateOn(publicationDate)
                                                     .SelectBookSummaryResponseObjects();
 
             return CreateFacadeTask(book);

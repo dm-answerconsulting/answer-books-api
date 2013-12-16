@@ -21,7 +21,7 @@ namespace BooksApi.Service.PipesAndFilters
             return query.Where(b => b.Genre.Name == genreName);
         }
         
-        public static IQueryable<Book> ForPublicationDate(this IQueryable<Book> query, DateTime publicationDate)
+        public static IQueryable<Book> ForPublicationDateOn(this IQueryable<Book> query, DateTime publicationDate)
         {
             var from = new DateTime(publicationDate.Year, publicationDate.Month, publicationDate.Day, 0, 0, 0);
             var to = from.AddDays(1).AddMilliseconds(-1);

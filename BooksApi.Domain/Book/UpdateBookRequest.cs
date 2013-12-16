@@ -1,6 +1,6 @@
 ﻿namespace BooksApi.Domain.Book
 {
-    public class UpdateBookRequestObject : CreateBookRequestObject
+    public class UpdateBookRequest : CreateBookRequest
     {
         public int Id { get; set; }
     }

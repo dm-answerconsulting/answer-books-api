@@ -7,24 +7,24 @@ namespace BooksApi.Service.PipesAndFilters
 {
     public static class BookObjectMappingExtensions
     {
-        public static IQueryable<BookDetailsResponseObject> SelectBookDetailsResponseObjects(this IQueryable<Book> query)
+        public static IQueryable<BookDetailsResponse> SelectBookDetailsResponseObjects(this IQueryable<Book> query)
         {
-            return query.Select(AsBookDetailsResponseObject).AsQueryable();
+            return query.Select(AsBookDetailsResponse).AsQueryable();
         }
 
-        public static IQueryable<BookSummaryResponseObject> SelectBookSummaryResponseObjects(this IQueryable<Book> query)
+        public static IQueryable<BookSummaryResponse> SelectBookSummaryResponseObjects(this IQueryable<Book> query)
         {
-            return query.Select(AsBookSummaryResponseObject).AsQueryable();
+            return query.Select(AsBookSummaryResponse).AsQueryable();
         }
 
-        private static BookDetailsResponseObject AsBookDetailsResponseObject(Book book)
+        private static BookDetailsResponse AsBookDetailsResponse(Book book)
         {
-            return new BookDetailsResponseObject().InjectFrom<FlatLoopValueInjection>(book) as BookDetailsResponseObject;
+            return new BookDetailsResponse().InjectFrom<FlatLoopValueInjection>(book) as BookDetailsResponse;
         }
 
-        private static BookSummaryResponseObject AsBookSummaryResponseObject(Book book) 
+        private static BookSummaryResponse AsBookSummaryResponse(Book book) 
         {
-            return new BookSummaryResponseObject().InjectFrom<FlatLoopValueInjection>(book) as BookSummaryResponseObject;
+            return new BookSummaryResponse().InjectFrom<FlatLoopValueInjection>(book) as BookSummaryResponse;
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace BooksApi.Domain
 {
-    public class BookDetailsResponseObject : BookSummaryResponseObject
+    public class BookDetailsResponse : BookSummaryResponse
     {
         public DateTime PublishDate { get; set; }
         public string Description { get; set; }

@@ -1,9 +1,8 @@
 ﻿using System;
-using BooksApi.Domain.Validation;
 
 namespace BooksApi.Domain.Book
 {
-    public class CreateBookRequestObject : ValidationObject
+    public class CreateBookRequest
     {
         public string Title { get; set; }
         public decimal Price { get; set; }
